@@ -1,0 +1,31 @@
+version: '2'
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile-php-fpm
+    ports:
+      - "9000"
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+  mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_DATABASE=roundcube
+      - MYSQL_USER=roundcube
+      - MYSQL_PASSWORD=YOUR_DATABASE_PASS
+      - MYSQL_ROOT_PASSWORD=YOUR_ROOT_PASS
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./files/mysql/:/docker-entrypoint-initdb.d/
+
+networks:
+  default:
+    external:
+      name: webmail

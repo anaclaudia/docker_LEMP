@@ -1,0 +1,5 @@
+FROM nginx:latest
+ADD nginx/nginx.conf /etc/nginx/
+ADD nginx/default_vhost.conf /etc/nginx/conf.d/
+ADD roundcube /var/www/html
+

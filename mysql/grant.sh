@@ -1,0 +1,1 @@
+mysql -uroot -pYOUR_ROOT_PASS -e "GRANT ALL PRIVILEGES ON roundcube.* TO roundcube@'172.17.0.%' IDENTIFIED BY 'YOUR_DATABASE_PASS';"

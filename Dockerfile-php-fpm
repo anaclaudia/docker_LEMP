@@ -1,0 +1,5 @@
+FROM php:7.0-fpm
+RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install mbstring
+ADD php-fpm/php-fpm.conf /usr/local/etc/php-fpm.conf
+ADD roundcube /var/www/html
